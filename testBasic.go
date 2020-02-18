@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"time"
 )
 
 var flag1, flag2 bool
@@ -19,6 +20,8 @@ func main() {
 	testLoops()
 	testIfAndElse()
 	testSwitch()
+	testDefer()
+	//Intermediate()
 }
 
 func testNamedReturn(x, y int) (sum, diff int) {
@@ -81,4 +84,31 @@ func testSwitch() {
 		// plan9, windows...
 		fmt.Printf("%s.\n", os)
 	}
+
+	// switch without condition
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+
+func testDefer() {
+	var x int = 1000
+	defer fmt.Println(x)
+	x++
+	fmt.Println(x)
+
+	// stacking defer
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
 }
