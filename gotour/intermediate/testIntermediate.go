@@ -97,4 +97,11 @@ func testSlices() {
 	dSlice2 := make([]string, 0, 3) // cap = 3, len = 0
 	fmt.Println(dSlice2, cap(dSlice2), len(dSlice2))
 
+	// append slice
+	var sApnd []int
+	fmt.Println(sApnd, len(sApnd), cap(sApnd))
+
+	sApnd = append(sApnd, 1, 2, 3, 4, 5)
+	fmt.Println(sApnd, len(sApnd), cap(sApnd))
+
 }
